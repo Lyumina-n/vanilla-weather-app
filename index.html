@@ -11,7 +11,9 @@
 </head>
 <body>
     <div class="container">
+        <div class="weather-app-wrapper">
         <div class="weather-app">
+            <div class="overview">
     <h1>
     New York
 </h1>
@@ -25,8 +27,13 @@
 </ul>
 <div class="row">
     <div class="col-6">
-        <img src="https://st3.depositphotos.com/24803492/37689/v/600/depositphotos_376897008-stock-illustration-modern-pattern-vintage-style-sun.jpg" alt="Clear" width="150"/>
-        12°C | °F  
+        <div class="d-flex weather-temperature">
+        <img src="https://st3.depositphotos.com/24803492/37689/v/600/depositphotos_376897008-stock-illustration-modern-pattern-vintage-style-sun.jpg" alt="Clear" width="150" id="icon"/>
+        <div>
+    <strong id="temperature">12</strong
+    ><span class="units">°C | <a href="">°F</a></span>
+  </div>
+</div>  
     </div>
     <div class="col-6">
         <ul>
@@ -40,8 +47,9 @@
                 Wind: 2 km/h 
             </li>
         </ul>
-    </div>
-    
+        </div>
+    </div> 
+</div>
 </div>
 <small>
    <a href="https://github.com/Lyumina-n/vanilla-weather-app.git" target="_blank"> Open-source code</a>, by <a href="https://www.instagram.com/lyumina.n/" target="_blank"> Liudmyla Nedokos</a>
