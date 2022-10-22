@@ -35,8 +35,11 @@ let humidityElement=document.querySelector("#humidity");
 humidityElement.innerHTML=response.data.temperature.humidity;
 let dateElement=document.querySelector("#date");
 dateElement.innerHTML=formatDate(response.data.time*1000);
+let iconElement=document.querySelector("#icon");
+iconElement.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
+iconElement.setAttribute("alt", response.data.condition.description);
 }
 
 let apiKey="3t24b911d0709b8ae0o92f53fd6c2444";
-let apiUrl=`https://api.shecodes.io/weather/v1/current?query=Ericeira&key=${apiKey}`;
+let apiUrl=`https://api.shecodes.io/weather/v1/current?query=Casablanca&key=${apiKey}`;
 axios.get(apiUrl).then(displayTemperature);
