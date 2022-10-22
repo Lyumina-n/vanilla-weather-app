@@ -39,7 +39,16 @@ let iconElement=document.querySelector("#icon");
 iconElement.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
 iconElement.setAttribute("alt", response.data.condition.description);
 }
-
+function search(city){
 let apiKey="3t24b911d0709b8ae0o92f53fd6c2444";
-let apiUrl=`https://api.shecodes.io/weather/v1/current?query=Casablanca&key=${apiKey}`;
+let apiUrl=`https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
 axios.get(apiUrl).then(displayTemperature);
+}
+function handleSubmit(event){
+    event.preventDefault();
+    let cityInputElement=document.querySelector("#city-input");
+    search(cityInputElement.value);
+}
+search("Paris");
+let form=document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
