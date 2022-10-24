@@ -38,6 +38,7 @@ dateElement.innerHTML=formatDate(response.data.time*1000);
 let iconElement=document.querySelector("#icon");
 iconElement.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
 iconElement.setAttribute("alt", response.data.condition.description);
+celsiusTemperature=response.data.temperature.current;
 }
 function search(city){
 let apiKey="3t24b911d0709b8ae0o92f53fd6c2444";
@@ -49,6 +50,31 @@ function handleSubmit(event){
     let cityInputElement=document.querySelector("#city-input");
     search(cityInputElement.value);
 }
-search("Paris");
+function disaplayFahrenheitTemperature(event){
+    event.preventDefault();
+    let fahrenheitTemperature=(celsiusTemperature*9)/5+32;
+    celsiusLink.classList.remove("active");
+    fahrenheitLink.classList.add("active");
+    let temperatureElement=document.querySelector("#temperature");
+temperatureElement.innerHTML=Math.round(fahrenheitTemperature);
+}
+function disaplayCelsiusTemperature(event){
+    event.preventDefault();
+    fahrenheitLink.classList.remove("active");
+    celsiusLink.classList.add("active");
+
+    let temperatureElement=document.querySelector("#temperature");
+    temperatureElement.innerHTML=Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature=null;
+
 let form=document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+let fahrenheitLink=document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", disaplayFahrenheitTemperature);
+
+let celsiusLink=document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", disaplayCelsiusTemperature);
+
+search("Paris");
