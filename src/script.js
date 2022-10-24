@@ -77,4 +77,4 @@ fahrenheitLink.addEventListener("click", disaplayFahrenheitTemperature);
 let celsiusLink=document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", disaplayCelsiusTemperature);
 
-search("Paris");
+search("Kherson");
