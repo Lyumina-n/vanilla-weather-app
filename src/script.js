@@ -21,7 +21,8 @@ if(minutes<10){
 return`${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+    console.log(response.data.daily);
     let forecastElement=document.querySelector("#forecast");
     let forecastHTML=`<div class="row">`;
     let days=[
@@ -44,6 +45,12 @@ forecastHTML=forecastHTML+`</div>`;
 forecastElement.innerHTML=forecastHTML;
 
 }
+function getForecast(coordinates){
+    console.log(coordinates);
+    let apiKey="3t24b911d0709b8ae0o92f53fd6c2444";
+    let apiUrl=`https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+axios.get(apiUrl).then(displayForecast);
+}
 function displayTemperature(response){
     
     let temperatureElement=document.querySelector("#temperature");
@@ -63,6 +70,7 @@ iconElement.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/wea
 iconElement.setAttribute("alt", response.data.condition.description);
 celsiusTemperature=response.data.temperature.current;
 console.log(response.data);
+getForecast(response.data.coordinates);
 }
 function search(city){
 let apiKey="3t24b911d0709b8ae0o92f53fd6c2444";
@@ -102,4 +110,3 @@ let celsiusLink=document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", disaplayCelsiusTemperature);
 
 search("Kherson");
-displayForecast();
