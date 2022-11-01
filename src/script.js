@@ -22,7 +22,7 @@ return`${day} ${hours}:${minutes}`;
 }
 
 function displayTemperature(response){
-    console.log(response.data);
+    
     let temperatureElement=document.querySelector("#temperature");
     temperatureElement.innerHTML=Math.round(response.data.temperature.current);
 let cityElement=document.querySelector("#city");
@@ -39,6 +39,7 @@ let iconElement=document.querySelector("#icon");
 iconElement.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
 iconElement.setAttribute("alt", response.data.condition.description);
 celsiusTemperature=response.data.temperature.current;
+console.log(response.data);
 }
 function search(city){
 let apiKey="3t24b911d0709b8ae0o92f53fd6c2444";

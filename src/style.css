@@ -61,3 +61,17 @@ top: -32px;
 a:link{
     text-decoration: none;
 }
+.weather-forecast{
+    margin-top: 20px;
+    text-align: center;
+    color: black;
+}
+.weather-forecast-date
+{
+    font-size: 18px;
+
+}
+.weather-forecast-temperatures, .weather-forecast-temperature-min{
+    font-size: 13px;
+    opacity: 0.6;
+}
